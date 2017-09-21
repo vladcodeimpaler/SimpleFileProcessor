@@ -1,11 +1,20 @@
 # SimpleFileProcessor
 
-Python file processor with input, done, error folders. 
-You can give it a directory and define a method to run for each file in it.
+Library for sequentially processing large amounts of files from an *input* folder 
+into *done* and *error* folders.
+ 
+You can give it a directory and define a method to run against each file in it.
+
 It will process all files in the directory and move them to 'done' or 'failed' folders 
 if processed successfully or not.
 
 It provides two method process() and process_all().
+
+## Installation
+
+```
+pip install simplefileprocessor
+```
 
 ## Usage
 
@@ -17,6 +26,8 @@ sfp = SimpleFileProcessor(input_folder='input',done_folder='done',failed_folder=
 
 Now you can drop any number of files into the */input* folder
 
+### Processing a Single File 
+
 To process a single file you first define a method to process. This is your *processing method*.
 
 The method can be anything you want, any valid python code as long as it conforms to this signature. 
@@ -26,7 +37,9 @@ method(filename=filename, **method_kwargs)
 ```
 
 It just has to return True or False if processing 
-was successful or not. You get to define what successful means.
+was successful or not. You get to define what success means.
+
+Here is an example *processing method* you could define
 
 ```
 def process_method(filename):
@@ -70,6 +83,10 @@ def process_method(filename, param1):
                     # return False (eg. processing method failed)    
 ```
 
+### Processing Multiple Files
+
+
+
 If the process_method() return True your file will be considered 'processed' 
 and it will be moved to the 'done' folder.
 
@@ -94,10 +111,10 @@ As each file completes processing the file is moved to a 'done' folder.
 Alternatively if processing failed, it is moved to a 'failed' folder.
 
 
-## Examples
+## Use Cases
 
 
-### Use Case 1
+### Use Case 1: Process hundreds of csv files sequentially
 
 You have a list of files with extension *.csv in your input folder.
 You want to process each file sequentially.
@@ -108,14 +125,16 @@ It also lets you define your input an output folders.
 To define how to 'process' a file you define a simple method of this format.
 The method looks like this:
 
-### Use Case 2
+### Use Case 2: Parse out multiple html files sequentially
 
 
 ## Release Log
 
-### Version 1.0
-- feature 1
-- feature 2
+### Version 1.0 - September 2017
+- single file processing
+- multiple file processing by extension
+- you can rename all your input,output and error folders
+- integrated logging
 
 ## Todo List
 - [s] add proper docstrings
