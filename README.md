@@ -18,10 +18,15 @@ pip install simplefileprocessor
 
 ## Usage
 
+```
+from simplefileprocessor.simplefileprocessor import SimpleFileProcessor
+```
+
 Instantiate the object and sets up the directories.
 
 ```
-sfp = SimpleFileProcessor(input_folder='input',done_folder='done',failed_folder='failed')
+sfp = SimpleFileProcessor(input_folder='input',done_folder='done',failed_folder='failed') 
+# you can use any other folder names you want for the input, done and failed folders
 ```
 
 Now you can drop any number of files into the */input* folder
